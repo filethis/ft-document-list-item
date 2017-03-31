@@ -83,11 +83,15 @@ An element that renders information about a FileThis document in a parent list
             is: 'ft-document-list-item',
 
             properties: {
+
+                /** The document resource to be displayed. */
                 document: {
                     type: Object,
                     notify: true,
                     value: null
                 },
+
+                /** Whether the document item should appear selected, or not. */
                 selected: {
                     type: Boolean,
                     notify: true,
