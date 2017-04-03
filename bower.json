@@ -1,6 +1,5 @@
 {
     "name": "ft-document-list-item",
-    "version": "0.0.2",
     "description": "An element that renders information about a FileThis document in a parent list",
     "main": "ft-document-list-item.html",
     "dependencies": {
