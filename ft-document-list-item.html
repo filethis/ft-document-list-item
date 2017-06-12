@@ -31,7 +31,7 @@ An element that renders information about a FileThis document in a parent list
 
 <dom-module id="ft-document-list-item">
 
-    <style include="iron-flex iron-flex-alignment"></style>
+    <style include="iron-flex iron-flex-alignment iron-positioning"></style>
 
     <template>
 
@@ -56,14 +56,14 @@ An element that renders information about a FileThis document in a parent list
                 <div style="height:6px;"></div>
 
                 <!-- Relevant Date -->
-                <iron-label style="width:100%; font-family:Arial; font-size:14px;; color:#777777"">
+                <iron-label style="width:100%; font-family:Arial; font-size:14px;; color:#777777">
                     Relevant Date: [[_dateToString(document.relevantDate)]]
                 </iron-label>
 
                 <div style="height:4px;"></div>
 
                 <!-- Added Date -->
-                <iron-label style="width:100%; font-family:Arial; font-size:14px;; color:#777777"">
+                <iron-label style="width:100%; font-family:Arial; font-size:14px;; color:#777777">
                     Date Added: [[_dateToString(document.addedDate)]]
                 </iron-label>
 
@@ -140,7 +140,7 @@ An element that renders information about a FileThis document in a parent list
 
             _sizeToString: function(bytes)
             {
-                if (bytes == undefined)
+                if (bytes === undefined)
                     return "";
                 var thresh = 1024;
                 if (bytes < thresh)
