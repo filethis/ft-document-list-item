@@ -32,9 +32,9 @@ An element that renders information about a FileThis document in a parent list
  -->
 <dom-module id="demo-fixture">
 
-    <style include="iron-flex iron-flex-alignment iron-positioning"></style>
-
     <template>
+
+        <style include="iron-flex iron-flex-alignment iron-positioning"></style>
 
         <style>
             :host {
@@ -95,14 +95,14 @@ An element that renders information about a FileThis document in a parent list
 
                         // Normal
                         var documentNormal = Object.assign({}, document);
-                        normal.document = documentNormal;
+                        this.$.normal.document = documentNormal;
 
                         // Selected
                         var documentSelected = Object.assign({}, document);
-                        selected.document = documentSelected;
-                        selected.selected = true;
+                        this.$.selected.document = documentSelected;
+                        this.$.selected.selected = true;
                     }
-                };
+                }.bind(this);
                 xmlHttpRequest.send();
             }
 
