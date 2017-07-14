@@ -1,6 +1,6 @@
 # Project configuration
 NAME=ft-document-list-item
-VERSION=0.0.14
+VERSION=0.0.15
 LOCAL_PORT=3637
 GITHUB_USER=filethis
 BOWER_NAMESPACE=FileThis
