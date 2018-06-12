@@ -40,46 +40,46 @@ This element displays a single FileThis document resource.
                 overflow: hidden;
                 @apply --ft-document-list-item;
             }
-            .interior {
+            #interior {
                 width: 600px;
                 height: 130px;
                 padding-left: 20px;
                 padding-right: 25px;
                 @apply --ft-document-list-item-interior;
             }
-            .middle {
+            #middle {
                 @apply --ft-document-list-item-middle;
             }
-            .name {
+            #name {
                 width: 100%;
                 font-family: Arial, Helvetica, sans-serif;
                 font-size: 18px;
                 @apply --ft-document-list-item-name;
             }
-            .relevant-date {
+            #relevantDate {
                 width: 100%;
                 font-family: Arial, Helvetica, sans-serif;
                 font-size: 14px;
                 color: #777777;
                 @apply --ft-document-list-item-relevant-date;
             }
-            .added-date {
+            #addedDate {
                 width: 100%;
                 font-family: Arial, Helvetica, sans-serif;
                 font-size: 14px;
                 color: #777777;
                 @apply --ft-document-list-item-added-date;
             }
-            .right {
+            #right {
                 @apply --ft-document-list-item-right;
             }
-            .pages {
+            #pages {
                 font-family: Arial, Helvetica, sans-serif;
                 font-size: 14px;
                 color: #777777;
                 @apply --ft-document-list-item-pages;
             }
-            .size {
+            #size {
                 font-family: Arial, Helvetica, sans-serif;
                 font-size: 14px;
                 color: #777777;
@@ -87,7 +87,7 @@ This element displays a single FileThis document resource.
             }
         </style>
 
-        <div id="interior" class="interior layout horizontal center">
+        <div id="interior" class="layout horizontal center">
 
             <!-- Thumbnail -->
             <div style="box-shadow: 3px 3px 3px #888888;border:1px solid #DDD;">
@@ -97,24 +97,24 @@ This element displays a single FileThis document resource.
             <div style="width:20px;"></div>
 
             <!-- Middle -->
-            <div id="middle" class="middle layout vertical">
+            <div id="middle" class="layout vertical">
 
                 <!-- Name -->
-                <iron-label class="name">
+                <iron-label id="name">
                     [[document.name]]
                 </iron-label>
 
                 <div style="height:6px;"></div>
 
                 <!-- Relevant Date -->
-                <iron-label class="relevant-date">
+                <iron-label id="relevantDate">
                     Relevant Date: [[_dateToString(document.relevantDate)]]
                 </iron-label>
 
                 <div style="height:4px;"></div>
 
                 <!-- Added Date -->
-                <iron-label class="added-date">
+                <iron-label id="addedDate">
                     Date Added: [[_dateToString(document.addedDate)]]
                 </iron-label>
 
@@ -125,17 +125,17 @@ This element displays a single FileThis document resource.
             <div style="width:25px;"></div>
 
             <!-- Right -->
-            <div id="right" class="right layout vertical end">
+            <div id="right" class="layout vertical end">
 
                 <!-- Pages -->
-                <iron-label class="pages">
+                <iron-label id="pages">
                     [[document.pageCount]] pages
                 </iron-label>
 
                 <div style="height:5px;"></div>
 
                 <!-- Size -->
-                <iron-label class="size">
+                <iron-label id="size">
                     [[_sizeToString(document.size)]]
                 </iron-label>
 
