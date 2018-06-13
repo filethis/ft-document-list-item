@@ -3,7 +3,7 @@
   "description": "An element that renders information about a FileThis document in a parent list",
   "main": "ft-document-list-item.html",
   "dependencies": {
-    "ft-element-demo": "filethis/ft-element-demo#^1.0.12",
+    "ft-element-demo": "filethis/ft-element-demo#^1.0.13",
     "iron-label": "PolymerElements/iron-label#1 - 2",
     "polymer": "Polymer/polymer#1.9 - 2"
   },
