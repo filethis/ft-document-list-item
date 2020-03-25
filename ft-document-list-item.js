@@ -1,4 +1,4 @@
-<!--
+/*
 Copyright 2018 FileThis, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,26 +12,29 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
--->
-
-
-<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
-<link rel="import" href="../iron-icon/iron-icon.html">
-<link rel="import" href="../iron-label/iron-label.html">
-<link rel="import" href="../paper-button/paper-button.html">
-<link rel="import" href="../polymer/polymer.html">
-
-<!--
+*/
+/**
 `<ft-document-list-item>`
 
 This element displays a single FileThis document resource.
 
 @demo
--->
-<dom-module id="ft-document-list-item">
+*/
+/*
+  FIXME(polymer-modulizer): the above comments were extracted
+  from HTML and may be out of place here. Review them and
+  then delete this comment!
+*/
+import '@polymer/iron-flex-layout/iron-flex-layout-classes.js';
 
-    <template>
-
+import '@polymer/iron-icon/iron-icon.js';
+import '@polymer/iron-label/iron-label.js';
+import '@polymer/paper-button/paper-button.js';
+import '@polymer/polymer/polymer-legacy.js';
+import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
+import { html } from '@polymer/polymer/lib/utils/html-tag.js';
+Polymer({
+  _template: html`
         <style include="iron-flex iron-flex-alignment iron-positioning"></style>
 
         <style>
@@ -141,84 +144,77 @@ This element displays a single FileThis document resource.
 
             </div>
         </div>
+`,
 
-    </template>
+  is: 'ft-document-list-item',
 
-    <script>
-        Polymer({
+  properties: {
 
-            is: 'ft-document-list-item',
+      /** The document resource to be displayed. */
+      document: {
+          type: Object,
+          notify: true,
+          value:
+              {
+                  accountId: "1",
+                  connectionId: "1",
+                  actionDate: "2016-03-15T01:05:34+00:00",
+                  addedDate: "2016-03-18T01:05:14+00:00",
+                  createdDate: "2016-03-15T01:05:14+00:00",
+                  deliveredDate: "2016-03-15T01:05:14+00:00",
+                  relevantDate: "2016-03-15T01:05:14+00:00",
+                  deliveryState: "done",
+                  id: "1",
+                  name: "Untitled",
+                  pageCount: "1",
+                  size: "1000",
+                  thumbnailUrl: "https://filethis.com/static/logos/72/Logo_FileThisHosted.png",
+              }
+      },
 
-            properties: {
+      /** Whether the document item should appear selected, or not. */
+      selected: {
+          type: Boolean,
+          notify: true,
+          value: false,
+          observer: "_onSelectedChanged"
+      }
+  },
 
-                /** The document resource to be displayed. */
-                document: {
-                    type: Object,
-                    notify: true,
-                    value:
-                        {
-                            accountId: "1",
-                            connectionId: "1",
-                            actionDate: "2016-03-15T01:05:34+00:00",
-                            addedDate: "2016-03-18T01:05:14+00:00",
-                            createdDate: "2016-03-15T01:05:14+00:00",
-                            deliveredDate: "2016-03-15T01:05:14+00:00",
-                            relevantDate: "2016-03-15T01:05:14+00:00",
-                            deliveryState: "done",
-                            id: "1",
-                            name: "Untitled",
-                            pageCount: "1",
-                            size: "1000",
-                            thumbnailUrl: "https://filethis.com/static/logos/72/Logo_FileThisHosted.png",
-                        }
-                },
+  _MONTH_NAMES: ['January','February','March','April','May','June','July','August','September','October','November','December'],
 
-                /** Whether the document item should appear selected, or not. */
-                selected: {
-                    type: Boolean,
-                    notify: true,
-                    value: false,
-                    observer: "_onSelectedChanged"
-                }
-            },
+  _onSelectedChanged: function(to, from)
+  {
+      var interior = this.$.interior;
+      if (this.selected)
+          this.style.backgroundColor = "#F6F6F6";
+      else
+          this.style.backgroundColor = "#FFFFFF";
+  },
 
-            _MONTH_NAMES: ['January','February','March','April','May','June','July','August','September','October','November','December'],
+  _dateToString: function(dateString)
+  {
+      var date = new Date(dateString);
+      var day = date.getDate();
+      var month = date.getMonth();
+      var monthName = this._MONTH_NAMES[month];
+      var year = date.getFullYear();
+      return monthName + " " + day + ", " + year;
+  },
 
-            _onSelectedChanged: function(to, from)
-            {
-                var interior = this.$.interior;
-                if (this.selected)
-                    this.style.backgroundColor = "#F6F6F6";
-                else
-                    this.style.backgroundColor = "#FFFFFF";
-            },
-
-            _dateToString: function(dateString)
-            {
-                var date = new Date(dateString);
-                var day = date.getDate();
-                var month = date.getMonth();
-                var monthName = this._MONTH_NAMES[month];
-                var year = date.getFullYear();
-                return monthName + " " + day + ", " + year;
-            },
-
-            _sizeToString: function(bytes)
-            {
-                if (bytes === undefined)
-                    return "";
-                var thresh = 1024;
-                if (bytes < thresh)
-                    return bytes + ' B';
-                var units = ['KB','MB','GB','TB'];
-                var u = -1;
-                do {
-                    bytes /= thresh;
-                    ++u;
-                } while(bytes >= thresh);
-                return bytes.toFixed(1) + ' ' + units[u];
-            }
-
-        });
-    </script>
-</dom-module>
+  _sizeToString: function(bytes)
+  {
+      if (bytes === undefined)
+          return "";
+      var thresh = 1024;
+      if (bytes < thresh)
+          return bytes + ' B';
+      var units = ['KB','MB','GB','TB'];
+      var u = -1;
+      do {
+          bytes /= thresh;
+          ++u;
+      } while(bytes >= thresh);
+      return bytes.toFixed(1) + ' ' + units[u];
+  }
+});
