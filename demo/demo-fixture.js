@@ -26,7 +26,6 @@ An element that renders information about a FileThis document in a parent list
   from HTML and may be out of place here. Review them and
   then delete this comment!
 */
-import 'ft-element-demo/ft-element-demo.js';
 
 import '@polymer/iron-flex-layout/iron-flex-layout-classes.js';
 import '@polymer/polymer/polymer-legacy.js';
@@ -46,7 +45,7 @@ Polymer
             }
         </style>
 
-        <ft-element-demo name="ft-document-list-item" style="width:100%; height: 100%; ">
+        <div style="width:100%; height: 100%; ">
 
             <div slot="instance" class="layout vertical center">
 
@@ -60,7 +59,7 @@ Polymer
 
             </div>
 
-        </ft-element-demo>
+        </div>
 `,
 
   is: 'demo-fixture',
