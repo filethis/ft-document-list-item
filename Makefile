@@ -1,7 +1,7 @@
 # Project configuration
 NAME=ft-document-list-item
 SRC_DIR=
-VERSION=1.0.29
+VERSION=3.0.0
 LOCAL_PORT=3637
 GITHUB_USER=filethis
 GITHUB_USER_ABBREV=ft
