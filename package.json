@@ -21,6 +21,7 @@
     "polymer.json"
   ],
   "dependencies": {
+    "npm-force-resolutions": "0.0.3",
     "@polymer/iron-label": "^3.0.0",
     "@polymer/iron-icon": "^3.0.0",
     "@polymer/paper-button": "^3.0.0",
@@ -38,6 +39,7 @@
     "test": "test"
   },
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
